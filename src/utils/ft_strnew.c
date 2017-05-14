@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hr_main.c                                          :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 14:56:31 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/03 15:42:20 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 14:49:36 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <hotrace.h>
+#include <ft_utils.h>
 
-int		main(void)
+char	*ft_strnew(size_t size)
 {
-	char *line;
+	char *str;
+	char *start;
 
-	while (get_next_line(0, &line) > 0)
-	{
-		ft_putstr(line);
-	}
-	return (0);
+	if ((str = (char *)malloc(sizeof(char) * size + 1)) == 0)
+		return (0);
+	start = str;
+	while (size--)
+		*str++ = '\0';
+	*str = '\0';
+	return (start);
 }

@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hr_main.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 14:56:31 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/02 14:35:43 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 14:43:44 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <hotrace.h>
+#include <ft_utils.h>
 
-int		main(void)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char *line;
+	unsigned char	*d_str;
+	unsigned char	*s_str;
+	int				size;
 
-	while (get_next_line(0, &line) > 0)
+	size = (int)len;
+	d_str = (unsigned char *)dst;
+	s_str = (unsigned char *)src;
+	if (s_str < d_str)
 	{
-		ft_putstr(line);
+		while (--size > -1)
+			d_str[size] = s_str[size];
 	}
-	return (0);
+	else
+	{
+		while (size--)
+			*d_str++ = *s_str++;
+	}
+	return (dst);
 }

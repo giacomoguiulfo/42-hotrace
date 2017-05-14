@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hr_main.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 14:56:31 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/03 16:52:18 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 14:43:58 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <hotrace.h>
+#include <ft_utils.h>
 
-int		main(void)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *line;
+	char	*str;
+	char	*start;
 
-	while (get_next_line(0, &line) > 0)
-	{
-		ft_putstr(line);
-	}
-	return (0);
+	if (!s1 || !s2 || (str = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1)) == 0)
+		return (NULL);
+	start = str;
+	while (*s1)
+		*str++ = *s1++;
+	while (*s2)
+		*str++ = *s2++;
+	*str = '\0';
+	return (start);
 }

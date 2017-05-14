@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hr_main.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 14:56:31 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/02 11:33:26 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 14:42:57 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <hotrace.h>
+#include <ft_utils.h>
 
-int		main(void)
+void	ft_bzero(void *s, size_t n)
 {
-	char *line;
+	unsigned char *str;
 
-	while (get_next_line(0, &line) > 0)
-	{
-		ft_putstr(line);
-	}
-	return (0);
+	str = (unsigned char *)s;
+	while (n--)
+		*str++ = 0;
 }

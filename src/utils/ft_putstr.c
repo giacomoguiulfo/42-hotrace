@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hr_main.c                                          :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 14:56:31 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/02 17:45:34 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 14:55:12 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <hotrace.h>
+#include <ft_utils.h>
 
-int		main(void)
+void	ft_putstr(char const *s)
 {
-	char *line;
-
-	while (get_next_line(0, &line) > 0)
-	{
-		ft_putstr(line);
-	}
-	return (0);
+	if (s)
+		write(1, s, ft_strlen(s));
 }

@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hr_main.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 14:56:31 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/02/27 16:26:37 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 14:43:51 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <hotrace.h>
+#include <ft_utils.h>
 
-int		main(void)
+char	*ft_strchr(const char *s, int c)
 {
-	char *line;
+	int				i;
+	unsigned char	a;
 
-	while (get_next_line(0, &line) > 0)
+	a = (unsigned char)c;
+	i = 0;
+	while (s[i] != '\0')
 	{
-		ft_putstr(line);
+		if (s[i] == a)
+			return ((char *)(s + i));
+		i++;
 	}
-	return (0);
+	if (s[i] == a)
+		return ((char *)(s + i));
+	return (NULL);
 }
