@@ -6,11 +6,13 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 16:27:04 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/14 16:48:59 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/14 17:53:50 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <hotrace.h>
+
+#include <string.h> //remove later!!!!!!!!!
 
 t_trie		*hr_newnode(char *str)
 {
@@ -19,7 +21,7 @@ t_trie		*hr_newnode(char *str)
 
 	node = NULL;
 	i = -1;
-	node = (t_trie)malloc(sizeof(t_trie));
+	node = (t_trie*)malloc(sizeof(t_trie));
 	if(!node)
 		return (node);
 	node->isEnd = 0;
@@ -29,30 +31,45 @@ t_trie		*hr_newnode(char *str)
 	return (node);
 }
 
-void		hr_addnode(t_trie *node, t_trie **root)
+void		hr_addnode(const char *key, t_trie *node, t_trie **root)
 {
 	int		level;
 	int		height;
 	int		index;
-	char	*str;
 	t_trie	*temp;
 
 	level = 0;
 	temp = *root;
-	str = node->value;
-	height = ft_strlen(node->value);
-	while (level < MAX_SIZE)
+	height = strlen(key); //change to ft_strlen
+	while (level < height)
 	{
-		index = str[level];
+		index = key[level];
 		if (!temp->substring[index])
-			temp->substring[index] = hr_newnode("\0");
+			temp->substring[index] = node;
 		temp = temp->substring[index];
 		level++;
 	}
 	temp->isEnd = 1;
 }
 
-t_trie		*hr_getnode(char *str, t_trie *root)
+t_trie		*hr_getnode(const char *key, t_trie **root)
 {
+	int		level;
+	int		height;
+	int		index;
+	t_trie	*temp;
 
+	temp = *root;
+	level = 0;
+	height = strlen(key); //change to ft_strlen
+	while (level < height)
+	{
+		index = key[level];
+		if (!temp->substring[index])
+			return (NULL);
+		temp = temp->substring[index];
+	}
+	if (!temp)
+		return (NULL);
+	return (temp);
 }
