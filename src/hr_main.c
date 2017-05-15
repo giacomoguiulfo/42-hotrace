@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 20:47:06 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/14 20:50:08 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	hr_query(t_trie *root)
 			break ;
 		chr = (query[0] > 0) ? 1 : 0;
 		temp = hr_getnode(query, &root);
-		if (temp->value)
+		if (temp && temp->value)
 		{
 			ft_putstr(temp->value);
 			ft_putstr("\n");
