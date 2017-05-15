@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:17 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 18:59:20 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/02/27 11:09:13 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 16:48:13 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include <ft_utils.h>
 
-# include "ft_utils.h"
-# define BUFF_SIZE 4096
+char	*ft_strncpy(char *dst, const char *src, size_t len)
+{
+	size_t i;
 
-#endif
+	i = 0;
+	while ((i < len) && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	while (i < len)
+	{
+		dst[i] = '\0';
+		i++;
+	}
+	return (dst);
+}

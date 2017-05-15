@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:17 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 18:59:20 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/02 22:07:22 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 16:48:06 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include <ft_utils.h>
 
-# include "ft_utils.h"
-# define BUFF_SIZE 4096
+void	*ft_memalloc(size_t size)
+{
+	void			*mem;
+	unsigned char	*str;
 
-#endif
+	if (size == 0 || (mem = malloc(size)) == 0)
+		return (0);
+	str = (unsigned char *)mem;
+	while (size--)
+		*str++ = 0;
+	return (mem);
+}

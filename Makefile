@@ -6,7 +6,7 @@
 #    By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/14 10:59:27 by gguiulfo          #+#    #+#              #
-#    Updated: 2017/05/14 18:55:02 by gguiulfo         ###   ########.fr        #
+#    Updated: 2017/05/14 18:58:57 by gguiulfo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,12 @@ CFLAGS	+= 	-Wall -Wextra -Werror
 CFLAGS	+= 	-I includes
 
 HR_FILES = 	hr_main hr_trie
-UT_FILES = 	ft_bzero ft_lstadd ft_lstdelnode ft_lstnew ft_memcpy \
-			ft_memmove ft_putstr ft_strchr ft_strdup ft_strjoin  \
-			ft_strlen ft_strndup ft_strnew get_next_line
+UT_FILES = 	ft_bzero ft_lstadd ft_lstdelnode ft_lstnew ft_memalloc \
+			ft_memcpy ft_memmove ft_putstr ft_strchr ft_strcpy     \
+			ft_strdup ft_strjoin ft_strlen ft_strncpy ft_strndup   \
+			ft_strnew get_next_line ft_realloc ft_getchar
 
-FILES := $(HR_FILES) $(addprefix utils/, $(UT_FILES))
+FILES	=	$(addprefix utils/, $(UT_FILES)) $(HR_FILES)
 
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(SRC:.c=.o)
