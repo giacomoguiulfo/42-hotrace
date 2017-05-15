@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 18:12:54 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/05/14 19:30:01 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ void	hr_read(void)
 	int		chr;
 	char	*key;
 	char	*value;
+	t_trie	*root;
 
 	chr = 1;
+	root = (t_trie *)malloc(sizeof(t_trie));
 	while (chr)
 	{
 		if ((key = hr_read_line()) == NULL)
@@ -64,7 +66,7 @@ void	hr_read(void)
 			chr = (value[0] > 0) ? 1 : 0;
 		}
 		if (chr)
-			; // store stuff
+			hr_addnode(key, hr_newnode(value), &root); // store stuff
 	}
 	// return (trie)
 }
@@ -73,6 +75,8 @@ void	hr_query(void)
 {
 	int		chr;
 	char	*query;
+	t_trie	*temp;
+	t_trie	*root;
 
 	chr = 1;
 	query = NULL;
@@ -82,6 +86,12 @@ void	hr_query(void)
 			break ;
 		chr = (query[0] > 0) ? 1 : 0;
 		// print query value for key
+		temp = hr_getnode(query, &root);
+		if (temp)
+		{
+			ft_putstr(temp->value);
+			ft_putstr("\n");
+		}
 	}
 }
 
