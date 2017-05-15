@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 20:53:34 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/14 21:12:12 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,11 @@ void	hr_query(t_trie *root)
 	}
 }
 
-void	hr_dlt_trie(void)
-{
-	; // deletes trie
-}
-
 int		main(void)
 {
 	t_trie *root;
 
 	root = hr_read();
 	hr_query(root);
-	hr_dlt_trie();
+	hr_dlt_trie(&root);
 }

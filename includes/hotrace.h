@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 11:24:17 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 20:43:34 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/14 21:16:49 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define BUFF_SIZE 4096
 #include <stdlib.h>
 
-#define MAX_SIZE 255
+#define MAX_SIZE 256
 typedef struct				s_trie
 {
 	struct s_trie		*substring[MAX_SIZE];
