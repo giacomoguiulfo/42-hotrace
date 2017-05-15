@@ -6,12 +6,13 @@
 /*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 16:27:04 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/14 17:53:50 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/14 18:19:21 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <hotrace.h>
 
+#include <stdio.h>
 #include <string.h> //remove later!!!!!!!!!
 
 t_trie		*hr_newnode(char *str)
@@ -68,6 +69,7 @@ t_trie		*hr_getnode(const char *key, t_trie **root)
 		if (!temp->substring[index])
 			return (NULL);
 		temp = temp->substring[index];
+		level++;
 	}
 	if (!temp)
 		return (NULL);
