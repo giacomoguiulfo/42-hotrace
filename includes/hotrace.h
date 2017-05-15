@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 11:24:17 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 18:07:25 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/14 19:04:04 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define HOTRACE_H
 
 # include "ft_utils.h"
+#include <stdlib.h>
+# define BUFF_SIZE 4096
 #include <stdlib.h>
 
 #define MAX_SIZE 255
