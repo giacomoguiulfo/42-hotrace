@@ -6,7 +6,7 @@
 #    By: gguiulfo <gguiulfo@student.42.us.org       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/14 10:59:27 by gguiulfo          #+#    #+#              #
-#    Updated: 2017/05/14 11:16:01 by gguiulfo         ###   ########.fr        #
+#    Updated: 2017/05/14 18:09:55 by aakin-al         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ CC		:= gcc
 CFLAGS	+= -Wall -Wextra -Werror
 CFLAGS	+= -I includes
 
-HR_FILES = hr_main
-UT_FILES = ft_getchar
+HR_FILES = hr_trie test
+//UT_FILES = ft_getchar
 
-FILES	:= $(addprefix utils/, $(UT_FILES)) $(HR_FILES)
+FILES := $(HR_FILES)
 
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(SRC:.c=.o)
