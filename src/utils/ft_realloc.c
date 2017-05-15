@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:17 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 18:11:05 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/04/06 16:38:07 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 18:06:17 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include <ft_utils.h>
 
-# include "ft_utils.h"
-# define BUFF_SIZE 4096
+void	*ft_realloc(void *ptr, size_t src_size, size_t new_size)
+{
+	void *new_ptr;
 
-#endif
+	if (!new_size)
+	{
+		if (ptr)
+			free(ptr);
+		return (ptr);
+	}
+	if (!ptr)
+		return (malloc(new_size));
+	if (new_size <= src_size)
+		return (ptr);
+	new_ptr = malloc(new_size);
+	if (new_ptr)
+	{
+		ft_memcpy(new_ptr, ptr, src_size);
+		free(ptr);
+	}
+	return (new_ptr);
+}

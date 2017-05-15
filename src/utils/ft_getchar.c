@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   ft_getchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:17 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 18:11:05 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/05/04 22:21:10 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 18:06:30 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include <ft_utils.h>
+#include <stdio.h>
 
-# include "ft_utils.h"
-# define BUFF_SIZE 4096
+int		ft_getchar(void)
+{
+	static char	buf[BUFSIZ];
+	static char	*bufp = buf;
+	static int	n = 0;
 
-#endif
+	if (n == 0)
+	{
+		n = read(0, buf, sizeof(buf));
+		bufp = buf;
+	}
+	return ((--n >= 0) ? (unsigned char)*bufp++ : EOF);
+}
