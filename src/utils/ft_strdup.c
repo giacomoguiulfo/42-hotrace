@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hr_main.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 14:56:31 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/02/28 15:11:12 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 14:43:54 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <hotrace.h>
+#include <ft_utils.h>
 
-int		main(void)
+char	*ft_strdup(const char *s1)
 {
-	char *line;
+	int		i;
+	char	*dup;
 
-	while (get_next_line(0, &line) > 0)
-	{
-		ft_putstr(line);
-	}
-	return (0);
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	dup = (char*)malloc(sizeof(char) * i + 1);
+	if (!dup)
+		return (NULL);
+	i = -1;
+	while (s1[++i] != '\0')
+		dup[i] = s1[i];
+	dup[i] = '\0';
+	return (dup);
 }

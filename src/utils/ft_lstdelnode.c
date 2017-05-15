@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hr_main.c                                          :+:      :+:    :+:   */
+/*   ft_lstdelnode.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 14:56:31 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/23 15:15:38 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 14:43:34 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <hotrace.h>
+#include <ft_utils.h>
 
-int		main(void)
+void	ft_lstdelnode(t_list **head, t_list *node)
 {
-	char *line;
+	t_list *temp;
 
-	while (get_next_line(0, &line) > 0)
+	if (!node)
+		return ;
+	if (*head == node)
+		*head = (*head)->next;
+	else
 	{
-		ft_putstr(line);
+		temp = *head;
+		while (temp->next != 0 && temp->next != node)
+			temp = temp->next;
+		if (temp->next == 0)
+			return ;
+		temp->next = temp->next->next;
 	}
-	return (0);
+	free(node->content);
+	free(node);
 }

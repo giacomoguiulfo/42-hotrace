@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hr_main.c                                          :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 14:56:31 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/23 14:17:24 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 14:45:28 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <hotrace.h>
+#include <ft_utils.h>
 
-int		main(void)
+char	*ft_strndup(const char *src, size_t len)
 {
-	char *line;
+	char	*dst;
+	char	*cdst;
 
-	while (get_next_line(0, &line) > 0)
-	{
-		ft_putstr(line);
-	}
-	return (0);
+	if (!(dst = ft_strnew(len + 1)))
+		return (0);
+	cdst = dst;
+	len++;
+	while (--len > 0)
+		*dst++ = *src++;
+	*dst = '\0';
+	return (cdst);
 }

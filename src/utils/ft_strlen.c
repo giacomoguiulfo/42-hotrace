@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hr_main.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 14:56:31 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/02/27 11:17:47 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/05/14 14:44:01 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <hotrace.h>
+#include <ft_utils.h>
 
-int		main(void)
+size_t	ft_strlen(const char *s)
 {
-	char *line;
+	int count;
 
-	while (get_next_line(0, &line) > 0)
+	count = 0;
+	while (s[count] != '\0')
 	{
-		ft_putstr(line);
+		count++;
 	}
-	return (0);
+	return (count);
 }
