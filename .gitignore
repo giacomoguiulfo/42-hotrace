@@ -27,6 +27,7 @@
 *.i*86
 *.x86_64
 *.hex
+./hotrace
 
 # Debug Files
 *.dSYM/
@@ -51,4 +52,8 @@ cmake-build-debug/
 
 # Other Stuff
 example/
+<<<<<<< HEAD
 hotrace
+=======
+src/test.c
+>>>>>>> bcb342ff44b2f3a5b9d934ba06ca9b68c5cede31
