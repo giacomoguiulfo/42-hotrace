@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 20:50:08 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/14 20:53:34 by aakin-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,10 @@ void	hr_query(t_trie *root)
 			ft_putstr("\n");
 		}
 		else
-			ft_putstr("Value not found\n");
+		{
+			ft_putstr(query);
+			ft_putstr(": Not found.\n");
+		}
 	}
 }
 
