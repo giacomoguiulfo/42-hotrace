@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 21:12:12 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/16 10:56:51 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ t_trie	*hr_read(void)
 	{
 		if ((key = hr_read_line()) == NULL)
 			break ;
-		chr = (key[0] > 0) ? 1 : 0;
+		if (!(chr = (key[0] > 0) ? 1 : 0))
+			free(key);
 		if (chr)
 		{
 			if ((value = hr_read_line()) == NULL)
@@ -62,7 +63,8 @@ t_trie	*hr_read(void)
 				free(key);
 				break ;
 			}
-			chr = (value[0] > 0) ? 1 : 0;
+			if (!(chr = (key[0] > 0) ? 1 : 0))
+				free(value);
 		}
 		if (chr)
 			hr_addnode(key, value, &root);
@@ -90,19 +92,19 @@ void	hr_query(t_trie *root)
 			ft_putstr(temp->value);
 			ft_putstr("\n");
 		}
-		else
+		else if (chr)
 		{
 			ft_putstr(query);
 			ft_putstr(": Not found.\n");
 		}
+		free(query);
 	}
 }
 
 int		main(void)
 {
-	t_trie *root;
+	t_trie	*root;
 
 	root = hr_read();
 	hr_query(root);
-	hr_dlt_trie(&root);
 }

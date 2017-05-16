@@ -6,7 +6,7 @@
 #    By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/14 10:59:27 by gguiulfo          #+#    #+#              #
-#    Updated: 2017/05/14 19:09:33 by aakin-al         ###   ########.fr        #
+#    Updated: 2017/05/16 09:53:10 by gguiulfo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,7 @@ CFLAGS	+= 	-Wall -Wextra -Werror
 CFLAGS	+= 	-I includes
 
 HR_FILES = 	hr_main hr_trie
-UT_FILES = 	ft_bzero ft_lstadd ft_lstdelnode ft_lstnew ft_memcpy \
-			ft_memmove ft_putstr ft_strchr ft_strdup ft_strjoin  \
-			ft_strlen ft_strndup ft_strnew get_next_line ft_getchar ft_realloc
+UT_FILES =  ft_strlen ft_getchar ft_realloc ft_memcpy ft_putstr
 
 FILES	=	$(addprefix utils/, $(UT_FILES)) $(HR_FILES)
 

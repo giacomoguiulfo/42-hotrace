@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hr_trie.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakin-al <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aakin-al <aakin-al@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 16:27:04 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/14 20:51:39 by aakin-al         ###   ########.fr       */
+/*   Updated: 2017/05/14 23:13:38 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ t_trie		*hr_newnode(void)
 	node = (t_trie*)malloc(sizeof(t_trie));
 	if (!node)
 		return (node);
-	node->isEnd = 0;
+	node->is_end = 0;
 	while (++i < MAX_SIZE)
 		node->substring[i] = NULL;
 	node->value = NULL;
 	return (node);
 }
 
-void		hr_addnode(const char *key, char *value,t_trie **root)
+void		hr_addnode(const char *key, char *value, t_trie **root)
 {
 	int		level;
 	int		height;
@@ -48,7 +48,7 @@ void		hr_addnode(const char *key, char *value,t_trie **root)
 		level++;
 	}
 	temp->value = value;
-	temp->isEnd = 1;
+	temp->is_end = 1;
 }
 
 t_trie		*hr_getnode(const char *key, t_trie **root)
@@ -57,7 +57,7 @@ t_trie		*hr_getnode(const char *key, t_trie **root)
 	int		height;
 	int		index;
 	t_trie	*temp;
-	
+
 	temp = *root;
 	level = 0;
 	height = ft_strlen(key);
