@@ -15,7 +15,7 @@ make
 ```
 
 Once in the program, you can start storing data by typing a key, and a value on the next line.
-After you hit twice the return key, you can now start searching values by key by typing them and then
+After you hit twice the return key, you can now start searching values by typing their corresponding keys and then
 pressing return. Here is a short example:
 
 ```
