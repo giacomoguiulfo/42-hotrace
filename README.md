@@ -35,7 +35,7 @@ Goodbye
 $>
 ```
 
-# Known bugs
+#### Known bugs
 
     - hotrace is not leak free :( 
 
