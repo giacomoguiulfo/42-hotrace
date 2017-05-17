@@ -6,7 +6,7 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/16 10:56:51 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/05/16 19:40:07 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,12 @@ char	*hr_read_line(void)
 	}
 }
 
-t_trie	*hr_read(void)
+t_trie	*hr_read(int chr)
 {
-	int		chr;
 	char	*key;
 	char	*value;
 	t_trie	*root;
 
-	chr = 1;
 	root = (t_trie *)malloc(sizeof(t_trie));
 	while (chr)
 	{
@@ -105,6 +103,6 @@ int		main(void)
 {
 	t_trie	*root;
 
-	root = hr_read();
+	root = hr_read(1);
 	hr_query(root);
 }
