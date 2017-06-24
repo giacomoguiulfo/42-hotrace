@@ -6,7 +6,7 @@
 /*   By: aakin-al <aakin-al@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 16:27:04 by aakin-al          #+#    #+#             */
-/*   Updated: 2017/05/14 23:13:38 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/06/21 23:52:54 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_trie		*hr_newnode(void)
 
 	node = NULL;
 	i = -1;
-	node = (t_trie*)malloc(sizeof(t_trie));
+	node = (t_trie*)ft_smalloc(sizeof(t_trie));
 	if (!node)
 		return (node);
 	node->is_end = 0;

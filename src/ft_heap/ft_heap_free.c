@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   ft_heap_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:17 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/06/21 23:48:37 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/06/21 21:04:59 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/06/23 06:45:23 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include <ft_heap.h>
 
-# include "ft_utils.h"
-# include "ft_heap.h"
-
-# define MAX_SIZE 256
-# define BUFF_SIZE 4096
-
-typedef struct			s_trie
+int		ft_heap_free(void)
 {
-	struct s_trie		*substring[MAX_SIZE];
-	int					is_end;
-	char				*value;
-}						t_trie;
+	t_heap_man	*heap_man;
+	t_memnode	*memnode;
+	t_memnode	*next;
 
-t_trie					*hr_newnode(void);
-t_trie					*hr_getnode(const char *key, t_trie **root);
-void					hr_addnode(const char *key, char *value, t_trie **root);
-
-#endif
+	heap_man = ft_get_heap();
+	if (heap_man == NULL)
+		return (1);
+	memnode = heap_man->first;
+	while (memnode != NULL)
+	{
+		next = memnode->next;
+		free(memnode);
+		memnode = next;
+	}
+	free(heap_man);
+	return (0);
+}

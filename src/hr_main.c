@@ -6,84 +6,54 @@
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 11:24:33 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/16 19:40:07 by gguiulfo         ###   ########.fr       */
+/*   Updated: 2017/06/23 08:16:00 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <hotrace.h>
 
-char	*hr_read_line(void)
+t_trie	*hr_read(void)
 {
-	int		c;
-	int		bufsize;
-	int		position;
-	char	*buffer;
-
-	position = 0;
-	bufsize = BUFF_SIZE;
-	buffer = (char *)malloc(sizeof(char) * bufsize);
-	while (1)
-	{
-		if ((c = ft_getchar()) == EOF)
-			free(buffer);
-		if (c == EOF)
-			return (NULL);
-		if (c == '\n')
-			buffer[position] = '\0';
-		if (c == '\n')
-			return (buffer);
-		else
-			buffer[position++] = c;
-		if (position >= bufsize)
-			buffer = ft_realloc(buffer, bufsize, bufsize + BUFF_SIZE);
-		if (position >= bufsize)
-			bufsize += BUFF_SIZE;
-	}
-}
-
-t_trie	*hr_read(int chr)
-{
+	char	*line;
 	char	*key;
 	char	*value;
+	int		ret;
 	t_trie	*root;
 
-	root = (t_trie *)malloc(sizeof(t_trie));
-	while (chr)
+	root = (t_trie *)ft_smalloc(sizeof(t_trie));
+	while ((ret = get_next_line(STDIN_FILENO, &line)))
 	{
-		if ((key = hr_read_line()) == NULL)
+		if (!line || line[0] == '\0' || ret < 1)
 			break ;
-		if (!(chr = (key[0] > 0) ? 1 : 0))
-			free(key);
-		if (chr)
+		key = ft_mstrdup(line);
+		ft_strdel(&line);
+		ret = get_next_line(STDIN_FILENO, &line);
+		if (!line || line[0] == '\0' || ret < 1)
 		{
-			if ((value = hr_read_line()) == NULL)
-			{
-				free(key);
-				break ;
-			}
-			if (!(chr = (key[0] > 0) ? 1 : 0))
-				free(value);
+			ft_sfree(key);
+			break ;
 		}
-		if (chr)
-			hr_addnode(key, value, &root);
+		value = ft_mstrdup(line);
+		ft_strdel(&line);
+		hr_addnode(key, value, &root);
 	}
+	ft_strdel(&line);
 	return (root);
 }
 
 void	hr_query(t_trie *root)
 {
 	int		chr;
+	int		ret;
 	char	*query;
 	t_trie	*temp;
 
 	chr = 1;
-	query = NULL;
 	temp = NULL;
-	while (chr)
+	while ((ret = get_next_line(STDIN_FILENO, &query)))
 	{
-		if ((query = hr_read_line()) == NULL)
+		if (!query || query[0] == '\0' || ret < 1)
 			break ;
-		chr = (query[0] > 0) ? 1 : 0;
 		temp = hr_getnode(query, &root);
 		if (temp && temp->value)
 		{
@@ -95,14 +65,18 @@ void	hr_query(t_trie *root)
 			ft_putstr(query);
 			ft_putstr(": Not found.\n");
 		}
-		free(query);
+		ft_strdel(&query);
 	}
+	ft_strdel(&query);
 }
 
 int		main(void)
 {
-	t_trie	*root;
+	t_heap_man	*heap_man;
+	t_trie		*root;
 
-	root = hr_read(1);
+	heap_man = ft_get_heap();
+	root = hr_read();
 	hr_query(root);
+	ft_heap_free();
 }

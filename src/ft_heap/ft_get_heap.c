@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getchar.c                                       :+:      :+:    :+:   */
+/*   ft_get_heap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/04 22:21:10 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 18:06:30 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/06/21 21:10:18 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/06/23 07:00:16 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_utils.h>
-#include <stdio.h>
+#include <ft_heap.h>
 
-int		ft_getchar(void)
+t_heap_man	*ft_get_heap(void)
 {
-	static char	buf[BUFSIZ];
-	static char	*bufp = buf;
-	static int	n = 0;
+	static t_heap_man	*heap_man;
 
-	if (n == 0)
-	{
-		n = read(0, buf, sizeof(buf));
-		bufp = buf;
-	}
-	return ((--n >= 0) ? (unsigned char)*bufp++ : EOF);
+	if (heap_man == NULL)
+		heap_man = ft_memalloc(sizeof(t_heap_man));
+	return (heap_man);
 }

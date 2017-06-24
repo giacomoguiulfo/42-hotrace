@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:17 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/06/21 23:48:37 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/03 16:52:18 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/06/23 07:24:49 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include <ft_utils.h>
 
-# include "ft_utils.h"
-# include "ft_heap.h"
-
-# define MAX_SIZE 256
-# define BUFF_SIZE 4096
-
-typedef struct			s_trie
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	struct s_trie		*substring[MAX_SIZE];
-	int					is_end;
-	char				*value;
-}						t_trie;
+	char	*str;
+	char	*start;
 
-t_trie					*hr_newnode(void);
-t_trie					*hr_getnode(const char *key, t_trie **root);
-void					hr_addnode(const char *key, char *value, t_trie **root);
-
-#endif
+	if (!s1 || !s2 || (str = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1)) == 0)
+		return (NULL);
+	start = str;
+	while (*s1)
+		*str++ = *s1++;
+	while (*s2)
+		*str++ = *s2++;
+	*str = '\0';
+	return (start);
+}

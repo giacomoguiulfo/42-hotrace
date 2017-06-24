@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   ft_mstrdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:17 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/06/21 23:48:37 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/06/23 07:56:13 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/06/23 07:57:12 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include <ft_heap.h>
 
-# include "ft_utils.h"
-# include "ft_heap.h"
-
-# define MAX_SIZE 256
-# define BUFF_SIZE 4096
-
-typedef struct			s_trie
+char	*ft_mstrdup(const char *s1)
 {
-	struct s_trie		*substring[MAX_SIZE];
-	int					is_end;
-	char				*value;
-}						t_trie;
+	int		i;
+	char	*dup;
 
-t_trie					*hr_newnode(void);
-t_trie					*hr_getnode(const char *key, t_trie **root);
-void					hr_addnode(const char *key, char *value, t_trie **root);
-
-#endif
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	dup = (char*)ft_smalloc(sizeof(char) * i + 1);
+	if (!dup)
+		return (NULL);
+	i = -1;
+	while (s1[++i] != '\0')
+		dup[i] = s1[i];
+	dup[i] = '\0';
+	return (dup);
+}

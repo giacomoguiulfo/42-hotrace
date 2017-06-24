@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 11:24:17 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/06/21 23:48:37 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/03 15:42:20 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/06/23 07:24:55 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include <ft_utils.h>
 
-# include "ft_utils.h"
-# include "ft_heap.h"
-
-# define MAX_SIZE 256
-# define BUFF_SIZE 4096
-
-typedef struct			s_trie
+char	*ft_strnew(size_t size)
 {
-	struct s_trie		*substring[MAX_SIZE];
-	int					is_end;
-	char				*value;
-}						t_trie;
+	char *str;
+	char *start;
 
-t_trie					*hr_newnode(void);
-t_trie					*hr_getnode(const char *key, t_trie **root);
-void					hr_addnode(const char *key, char *value, t_trie **root);
-
-#endif
+	if ((str = (char *)malloc(sizeof(char) * size + 1)) == 0)
+		return (0);
+	start = str;
+	while (size--)
+		*str++ = '\0';
+	*str = '\0';
+	return (start);
+}

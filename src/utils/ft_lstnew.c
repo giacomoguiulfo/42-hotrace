@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguiulfo <gguiulfo@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/06 16:38:07 by gguiulfo          #+#    #+#             */
-/*   Updated: 2017/05/14 18:06:17 by gguiulfo         ###   ########.fr       */
+/*   Created: 2017/03/04 17:39:00 by gguiulfo          #+#    #+#             */
+/*   Updated: 2017/06/23 07:24:14 by gguiulfo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_utils.h>
 
-void	*ft_realloc(void *ptr, size_t src_size, size_t new_size)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	void *new_ptr;
+	t_list	*node;
 
-	if (!new_size)
+	if ((node = (t_list *)malloc(sizeof(t_list))) == 0)
+		return (NULL);
+	if (!content)
 	{
-		if (ptr)
-			free(ptr);
-		return (ptr);
+		node->content = NULL;
+		node->content_size = 0;
 	}
-	if (!ptr)
-		return (malloc(new_size));
-	if (new_size <= src_size)
-		return (ptr);
-	new_ptr = malloc(new_size);
-	if (new_ptr)
+	else
 	{
-		ft_memcpy(new_ptr, ptr, src_size);
-		free(ptr);
+		if ((node->content = malloc(sizeof(content_size))) == 0)
+		{
+			free(node);
+			return (NULL);
+		}
+		ft_memcpy(node->content, content, content_size);
+		node->content_size = content_size;
 	}
-	return (new_ptr);
+	node->next = NULL;
+	return (node);
 }
